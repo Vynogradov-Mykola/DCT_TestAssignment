@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace DCT_TestApp
 {
    
     public partial class ListPage : Page
     {
+        GetData a = new GetData();
+        List<Asset> assets = new List<Asset>();
         public ListPage()
         {
             InitializeComponent();
-            TopList.Items.Add("sssssssssss");
-            TopList.Items.Add("sssssssssssddd");
-            TopList.Items.Add("sssssssssssfff");
-            TopList.Items.Add("sssssssssssgggg");
-            TopList.Items.Add("sssssssssssaaaa");
+            
+            string url = "https://api.coincap.io/v2/assets?limit=10";
+            assets = a.GetAssets(url);
+
+            if (assets != null)
+            {
+                foreach (Asset asset in assets)
+                {
+                    string adder =($"Currency: {asset.Name}, Price: {asset.PriceUsd} USD");
+                    TopList.Items.Add(adder);
+                }
+            }
         }
         
-  
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TopList.Items.Add("sssssssssssaaaa");
+            NavigationService.Navigate(new DetailedInfPage(assets[TopList.SelectedIndex].Name));
         }
     }
 }

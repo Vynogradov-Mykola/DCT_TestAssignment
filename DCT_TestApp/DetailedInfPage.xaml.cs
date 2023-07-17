@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DCT_TestApp
 {
@@ -20,6 +8,38 @@ namespace DCT_TestApp
         public DetailedInfPage()
         {
             InitializeComponent();
+        }
+        public DetailedInfPage(string Currency)
+        {
+            InitializeComponent();
+            Name.Text = Currency;
+            GetData a = new GetData();
+            List<Asset> assets = new List<Asset>();
+            string url = "https://api.coincap.io/v2/assets/"+Currency.ToLower();
+            assets = a.GetAssets(url);
+
+            if (assets != null)
+            {
+                foreach (Asset asset in assets)
+                {
+                    Name.Text = asset.Name;
+                    Volume.Text = asset.VolumeUsd24Hr.ToString();
+                    Price.Text = asset.PriceUsd.ToString();
+                    PriceChange.Text = asset.ChangePercent24Hr.ToString();
+                    ID.Text = asset.Id.ToString();
+                }
+            }
+            List<Market> markets = new List<Market>();
+            url = "https://api.coincap.io/v2/assets/" + Currency.ToLower()+"/markets?limit=10";
+            markets = a.GetMarkets(url);
+            if (markets != null)
+            {
+                foreach (Market market in markets)
+                {
+                    string adder = ($"Market: {market.ExchangeId}, Price: {market.PriceUsd} USD");
+                    MarketList.Items.Add(adder);
+                }
+            }
         }
     }
 }
