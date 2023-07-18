@@ -9,10 +9,12 @@
       Title="Convert" Height="372">
 
     <Grid Height="369">
-        <Button Content="Convert" HorizontalAlignment="Left" Height="72" Margin="257,68,0,0" VerticalAlignment="Top" Width="310"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="257,147,0,0" TextWrapping="Wrap" Text="FIRST" VerticalAlignment="Top" Width="120"/>
-        <Label Content="=====&gt;" HorizontalAlignment="Left" Height="54" Margin="382,145,0,0" VerticalAlignment="Top" Width="99"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="446,147,0,0" TextWrapping="Wrap" Text="SECOND" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Convert" HorizontalAlignment="Left" Height="72" Margin="257,68,0,0" VerticalAlignment="Top" Width="310" Click="ConvertButton_Click"/>
+        <TextBox x:Name="FirstCurrency" HorizontalAlignment="Left" Height="25" Margin="257,147,0,0" TextWrapping="Wrap" Text="FIRST CURRENCY ID" VerticalAlignment="Top" Width="140"/>
+        <Label Content="===&gt;" HorizontalAlignment="Left" Height="54" Margin="390,164,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="SecondCurrency" HorizontalAlignment="Left" Height="25" Margin="426,147,0,0" TextWrapping="Wrap" Text="SECOND CURRENCY ID" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="CountFirst" HorizontalAlignment="Left" Height="25" Margin="257,185,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="CountSecond" HorizontalAlignment="Left" Height="25" Margin="426,185,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="140"/>
 
     </Grid>
 </Page>
