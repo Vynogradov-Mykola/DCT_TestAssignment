@@ -3,18 +3,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DCT_TestApp"
+      xmlns:local="clr-namespace:DCT_TestApp.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Convert" Height="372">
+    <Page.DataContext>
+        <local:ConvertCurrency/>
+    </Page.DataContext>
 
     <Grid Height="369">
-        <Button Content="Convert" HorizontalAlignment="Left" Height="72" Margin="257,68,0,0" VerticalAlignment="Top" Width="310" Click="ConvertButton_Click"/>
-        <TextBox x:Name="FirstCurrency" HorizontalAlignment="Left" Height="25" Margin="257,147,0,0" TextWrapping="Wrap" Text="FIRST CURRENCY ID" VerticalAlignment="Top" Width="140"/>
-        <Label Content="===&gt;" HorizontalAlignment="Left" Height="54" Margin="390,164,0,0" VerticalAlignment="Top" Width="53"/>
-        <TextBox x:Name="SecondCurrency" HorizontalAlignment="Left" Height="25" Margin="426,147,0,0" TextWrapping="Wrap" Text="SECOND CURRENCY ID" VerticalAlignment="Top" Width="140"/>
-        <TextBox x:Name="CountFirst" HorizontalAlignment="Left" Height="25" Margin="257,185,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="140"/>
-        <TextBox x:Name="CountSecond" HorizontalAlignment="Left" Height="25" Margin="426,185,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="140"/>
+        <Button Content="{Binding ConvLoc}" HorizontalAlignment="Left" Height="72" Margin="257,68,0,0" VerticalAlignment="Top" Width="310" Command="{Binding ConvertCommand}"/>
+        <TextBox Text="{Binding FirstCurrency}" HorizontalAlignment="Left" Height="25" Margin="257,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <Label Content="===&gt;" HorizontalAlignment="Left" Height="32" Margin="397,164,0,0" VerticalAlignment="Top" Width="53"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Height="25" Margin="221,147,0,0" VerticalAlignment="Top" Width="31"/>
+        <TextBox Text="{Binding SecondCurrency}" x:Name="SecondCurrency" HorizontalAlignment="Left" Height="25" Margin="426,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBox Text="{Binding CountFirst}" x:Name="CountFirst" HorizontalAlignment="Left" Height="25" Margin="257,185,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="140"/>
+        <TextBox Text="{Binding CountSecond}" x:Name="CountSecond" HorizontalAlignment="Left" Height="25" Margin="426,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <Label Content="{Binding CountLoc}" HorizontalAlignment="Left" Height="25" Margin="184,185,0,0" VerticalAlignment="Top" Width="68"/>
 
     </Grid>
 </Page>

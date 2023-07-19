@@ -14,5 +14,6 @@
         <Button Content="Detailed information" HorizontalAlignment="Left" Height="40" Margin="171,10,0,0" VerticalAlignment="Top" Width="173" Click="DetailedInfPage_Click"/>
         <Button Content="Convert" HorizontalAlignment="Left" Height="40" Margin="342,10,0,0" VerticalAlignment="Top" Width="173" Click="ConvertPage_Click"/>
         <Button Content="Theme" HorizontalAlignment="Left" Height="40" Margin="744,10,-0.4,0" VerticalAlignment="Top" Width="50" Click="Button_Click"/>
+        <Button x:Name="LocalButton" Content="En" HorizontalAlignment="Left" Height="40" Margin="694,10,0,0" VerticalAlignment="Top" Width="50" Click="Local_Click"/>
     </Grid>
 </Window>

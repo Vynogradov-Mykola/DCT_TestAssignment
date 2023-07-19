@@ -1,24 +1,24 @@
 ﻿<Page x:Class="DCT_TestApp.DetailedInfPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="DetailedInfPage" Height="369.6"
-     >
+      xmlns:local="clr-namespace:DCT_TestApp.ViewModels"
+      Title="DetailedInfPage" Height="369.6">
+    <Page.DataContext>
+        <local:DetailedInfViewModel/>
+    </Page.DataContext>
+
 
     <Grid Height="377">
-        <TextBox x:Name="Price" HorizontalAlignment="Left" Height="35" Margin="10,268,0,0" TextWrapping="Wrap" Text="price" VerticalAlignment="Top" Width="329"/>
-        <TextBox x:Name="Volume" HorizontalAlignment="Left" Height="35" Margin="10,228,0,0" TextWrapping="Wrap" Text="volume" VerticalAlignment="Top" Width="329" RenderTransformOrigin="-0.516,-1.096"/>
-        <TextBox x:Name="PriceChange" HorizontalAlignment="Left" Height="35" Margin="10,308,0,0" TextWrapping="Wrap" Text="price change" VerticalAlignment="Top" Width="329" RenderTransformOrigin="0.456,-0.435"/>
-        <ListBox x:Name="MarketList" HorizontalAlignment="Left" Height="307" Margin="344,36,0,0" VerticalAlignment="Top" Width="433"/>
-        <Label Content="Markets" HorizontalAlignment="Left" Margin="524,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Information:" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top"/>
-        <Button Content="Search" HorizontalAlignment="Left" Height="51" Margin="10,36,0,0" VerticalAlignment="Top" Width="329" Click="SearchButton_Click"/>
-        <TextBox x:Name="ID" HorizontalAlignment="Left" Height="37" Margin="10,123,0,0" TextWrapping="Wrap" Text="Currencies ID" VerticalAlignment="Top" Width="329"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="35" Margin="10,188,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="329" RenderTransformOrigin="-0.516,-1.096"/>
+        <TextBox Text="{Binding Price}" HorizontalAlignment="Left" Height="35" Margin="10,268,0,0" VerticalAlignment="Top" Width="329"/>
+        <TextBox Text="{Binding Volume}" HorizontalAlignment="Left" Height="35" Margin="10,228,0,0" VerticalAlignment="Top" Width="329" RenderTransformOrigin="-0.516,-1.096"/>
+        <TextBox Text="{Binding PriceChange}" HorizontalAlignment="Left" Height="35" Margin="10,308,0,0" VerticalAlignment="Top" Width="329" RenderTransformOrigin="0.456,-0.435"/>
+        <ListBox ItemsSource="{Binding MarketList}" HorizontalAlignment="Left" Height="307" Margin="344,36,0,0" VerticalAlignment="Top" Width="433"/>
+        <Label Content="{Binding MarkLoc}" HorizontalAlignment="Left" Margin="524,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding InfLoc}" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top"/>
+        <Button Content="{Binding SearchLoc}" HorizontalAlignment="Left" Height="27" Margin="10,66,0,0" VerticalAlignment="Top" Width="329" Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=ID, Path=Text}"/>
+        <TextBox Text="{Binding Id}" x:Name="ID" HorizontalAlignment="Left" Height="37" Margin="10,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"/>
+        <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="35" Margin="10,188,0,0" VerticalAlignment="Top" Width="329" RenderTransformOrigin="-0.516,-1.096"/>
         <Label Content="ID:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
-
+        <Button Content="{Binding DispChartLoc}" HorizontalAlignment="Left" Height="27" Margin="10,36,0,0" VerticalAlignment="Top" Width="329" Click="DisplayChartsButton_Click" />
     </Grid>
 </Page>

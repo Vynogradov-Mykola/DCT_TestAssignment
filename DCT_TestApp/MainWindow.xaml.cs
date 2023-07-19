@@ -7,14 +7,15 @@ namespace DCT_TestApp
    
     public partial class MainWindow : Window
     {
-        ListPage listpage = new ListPage();
-        DetailedInfPage detailedinfpage = new DetailedInfPage();
-        Convert convert = new Convert();
+        public string Local = "EN";
+        
+        
         bool DarkTheme = false;
+        
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new ListPage());
+            MainFrame.Navigate(new ListPage(Local));
             // Load and apply the light theme
             ResourceDictionary LightTheme = new ResourceDictionary();
             LightTheme.Source = new Uri("LightTheme.xaml", UriKind.Relative);
@@ -25,18 +26,21 @@ namespace DCT_TestApp
         
         private void ListPage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(listpage);
+            ListPage listpage = new ListPage(Local);
+            MainFrame.Navigate(listpage);   //navigate to ListPage
         }
         private void DetailedInfPage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(detailedinfpage);
+            DetailedInfPage detailedinfpage = new DetailedInfPage(Local);
+            MainFrame.Navigate(detailedinfpage);//navigate to DetailedInfPage
         }
         private void ConvertPage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(convert);
+            Convert convert = new Convert(Local);
+            MainFrame.Navigate(convert); //navigate to ConverPage
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+       
+        private void Button_Click(object sender, RoutedEventArgs e) //change theme
         {
             if (DarkTheme == false)
             {
@@ -49,10 +53,6 @@ namespace DCT_TestApp
             }
             else
             {
-                // Remove the dark theme
-                ResourceDictionary darkTheme = new ResourceDictionary();
-                darkTheme.Source = new Uri("DarkTheme.xaml", UriKind.Relative);
-                Application.Current.Resources.MergedDictionaries.Remove(darkTheme);
                 // Load and apply the light theme
                 ResourceDictionary LightTheme = new ResourceDictionary();
                 LightTheme.Source = new Uri("LightTheme.xaml", UriKind.Relative);
@@ -61,6 +61,21 @@ namespace DCT_TestApp
                 Background = Brushes.White;
             }
             
+        }
+        private void Local_Click(object sender, RoutedEventArgs e) //change theme
+        {
+            if (Local=="UA")
+            {
+                LocalButton.Content = "En";
+                Local = "EN";
+            }
+            else if(Local=="EN")
+            {
+                LocalButton.Content = "Ua";
+                Local = "UA";
+            }
+            
+
         }
     }
 }
